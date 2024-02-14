@@ -593,7 +593,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2000
+  m_Mass: 4000
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -617,7 +617,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1105929142}
-  - component: {fileID: 1105929141}
   - component: {fileID: 1105929143}
   m_Layer: 0
   m_Name: Instantiator
@@ -626,29 +625,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1105929141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1105929140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f49eb20810bdfec49b87e075923cd3da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  body_to_instantiate: {fileID: 4380121075188069488, guid: 69bfde284f958f14c8210b159e152820, type: 3}
-  parent_body: {fileID: 761646831}
-  num_of_bodies: 1
-  spawn_distribution: Uniform
-  orbit_type: Circular
-  base_mass: 100
-  mass_variance: 5
-  base_size: 9
-  size_variance: 1
-  altitude_mult: 5
-  altitude_variance: 1
 --- !u!4 &1105929142
 Transform:
   m_ObjectHideFlags: 0
@@ -678,15 +654,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body_to_instantiate: {fileID: 4380121075188069488, guid: 69bfde284f958f14c8210b159e152820, type: 3}
   parent_body: {fileID: 761646831}
-  num_of_bodies: 70
+  num_of_bodies: 1
   spawn_distribution: Uniform
-  orbit_type: Circular
+  orbit_type: Vertical
   base_mass: 1
-  mass_variance: 1.1
-  base_size: 1
+  mass_variance: 1
+  base_size: 2
   size_variance: 1.1
   altitude_mult: 1.5
-  altitude_variance: 1.5
+  altitude_variance: 1.2
+  vertical_speed: -0.1
 --- !u!1 &1482799528
 GameObject:
   m_ObjectHideFlags: 0

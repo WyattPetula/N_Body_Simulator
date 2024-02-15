@@ -580,7 +580,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 20.48
+  m_Radius: 20.2
 --- !u!50 &761646836
 Rigidbody2D:
   serializedVersion: 4
@@ -654,16 +654,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body_to_instantiate: {fileID: 4380121075188069488, guid: 69bfde284f958f14c8210b159e152820, type: 3}
   parent_body: {fileID: 761646831}
-  num_of_bodies: 1
+  num_of_bodies: 20
   spawn_distribution: Uniform
-  orbit_type: Vertical
-  base_mass: 1
+  clump_multiplier: 1
+  orbit_type: Circular
+  base_mass: 10
   mass_variance: 1
   base_size: 2
-  size_variance: 1.1
+  size_variance: 1
   altitude_mult: 1.5
-  altitude_variance: 1.2
-  vertical_speed: -0.1
+  altitude_variance: 1
+  vertical_speed: 0
 --- !u!1 &1482799528
 GameObject:
   m_ObjectHideFlags: 0

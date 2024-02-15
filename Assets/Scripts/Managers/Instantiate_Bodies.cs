@@ -7,7 +7,8 @@ public class Instantiate_Bodies : MonoBehaviour
     public GameObject body_to_instantiate;
     public GameObject parent_body;
     public int num_of_bodies = 1; // Must be >= 0
-    public string spawn_distribution = "Random"; // Uniform, Random, Clump.
+    public string spawn_distribution = "Random"; // Uniform, Random.
+    public float clump_multiplier = 1; // OPTIONAL. Uniformly clumps bodies in a segment of an orbit for decimal values and non-uniformly for values > 1.
     public string orbit_type = "Circular"; // Circular, Mild E, Moderate E, High E, Escape, Vertical.
     public float base_mass = 10; // Minimum mass.
     public float mass_variance = 1; // Multiplier that randomizes mass.
@@ -15,7 +16,7 @@ public class Instantiate_Bodies : MonoBehaviour
     public float size_variance = 1; // Multiplier that randomizes size.
     public float altitude_mult = 2; // Must be > 1.0
     public float altitude_variance = 1; // Multiplier that upward randomness to the altitude at which objects spawn.
-    public float vertical_speed = 0; // Optional. To be used for vertical orbit type.
+    public float vertical_speed = 0; // OPTIONAL. To be used for vertical orbit type.
 
     void Start()
     {
@@ -51,8 +52,16 @@ public class Instantiate_Bodies : MonoBehaviour
 
         for (int i = 0; i < num_of_bodies; i++)
         {
-            // Calculate the uniform spawn positions.
-            spawn_pos = parentRB2D.position + Random.insideUnitCircle.normalized * obj_distance * Random.Range(1, altitude_variance);
+            // Calculate spawn positions.
+            if (spawn_distribution == "Random")
+                spawn_pos = parentRB2D.position + Random.insideUnitCircle.normalized * obj_distance * Random.Range(1, altitude_variance);
+            else //Default is uniform.
+            {
+                float radians = (i * 2 * Mathf.PI / num_of_bodies) * clump_multiplier;
+                float vertical = Mathf.Sin(radians);
+                float horizontal = Mathf.Cos(radians);
+                spawn_pos = parentRB2D.position + new Vector2(horizontal, vertical) * obj_distance * Random.Range(1, altitude_variance);
+            }
 
             // Instantiate bodies.
             GameObject instance = Instantiate(body_to_instantiate, spawn_pos, Quaternion.identity);

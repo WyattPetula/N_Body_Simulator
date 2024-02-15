@@ -9,7 +9,8 @@ public class Instantiate_Bodies : MonoBehaviour
     public int num_of_bodies = 1; // Must be >= 0
     public string spawn_distribution = "Random"; // Uniform, Random.
     public float clump_multiplier = 1; // OPTIONAL. Uniformly clumps bodies in a segment of an orbit for decimal values and non-uniformly for values > 1.
-    public string orbit_type = "Circular"; // Circular, Mild E, Moderate E, High E, Escape, Vertical.
+    public float clump_offset = 0; // OPTIONAL. Offsets a clump along an orbit (value is multiplied by 2 PI).
+    public string orbit_type = "Circular"; // Vertical, Suborbital, Grazing, Inward E, Circular, Mild E, Moderate E, High E, Escape.
     public float base_mass = 10; // Minimum mass.
     public float mass_variance = 1; // Multiplier that randomizes mass.
     public float base_size = 1; // Minimum size.
@@ -33,18 +34,24 @@ public class Instantiate_Bodies : MonoBehaviour
         float obj_distance = parentCC2D.radius * altitude_mult;
 
         // Calculate initial body velocity based on orbit type.
-        if (orbit_type == "Circular")
+        if (orbit_type == "Vertical")
+            spawn_speed = -vertical_speed;
+        else if (orbit_type == "Suborbital")
+            spawn_speed = Mathf.Sqrt(0.3f * 0.6674f * parentRB2D.mass / obj_distance);
+        else if (orbit_type == "Grazing")
+            spawn_speed = Mathf.Sqrt(0.6f * 0.6674f * parentRB2D.mass / obj_distance);
+        else if (orbit_type == "Inward E")
+            spawn_speed = Mathf.Sqrt(0.8f * 0.6674f * parentRB2D.mass / obj_distance);
+        else if (orbit_type == "Circular")
             spawn_speed = Mathf.Sqrt(0.6674f * parentRB2D.mass / obj_distance);
-        else if (orbit_type == "Escape")
-            spawn_speed = Mathf.Sqrt(2 * 0.6674f * parentRB2D.mass / obj_distance);
         else if (orbit_type == "Mild E")
             spawn_speed = Mathf.Sqrt(1.2f * 0.6674f * parentRB2D.mass / obj_distance);
         else if (orbit_type == "Moderate E")
             spawn_speed = Mathf.Sqrt(1.4f * 0.6674f * parentRB2D.mass / obj_distance);
         else if (orbit_type == "High E")
             spawn_speed = Mathf.Sqrt(1.6f * 0.6674f * parentRB2D.mass / obj_distance);
-        else if (orbit_type == "Vertical")
-            spawn_speed = -vertical_speed;
+        else if (orbit_type == "Escape")
+            spawn_speed = Mathf.Sqrt(2 * 0.6674f * parentRB2D.mass / obj_distance);
         else
             spawn_speed = 0;
         
@@ -57,7 +64,7 @@ public class Instantiate_Bodies : MonoBehaviour
                 spawn_pos = parentRB2D.position + Random.insideUnitCircle.normalized * obj_distance * Random.Range(1, altitude_variance);
             else //Default is uniform.
             {
-                float radians = (i * 2 * Mathf.PI / num_of_bodies) * clump_multiplier;
+                float radians = (i * 2 * Mathf.PI / num_of_bodies) * clump_multiplier + clump_offset * Mathf.PI;
                 float vertical = Mathf.Sin(radians);
                 float horizontal = Mathf.Cos(radians);
                 spawn_pos = parentRB2D.position + new Vector2(horizontal, vertical) * obj_distance * Random.Range(1, altitude_variance);

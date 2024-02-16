@@ -540,7 +540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body_to_instantiate: {fileID: 4380121075188069488, guid: 69bfde284f958f14c8210b159e152820, type: 3}
   parent_body: {fileID: 761646831}
-  num_of_bodies: 100
+  num_of_bodies: 60
   spawn_distribution: Uniform
   clump_multiplier: 1
   clump_offset: 0

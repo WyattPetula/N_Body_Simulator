@@ -5,6 +5,8 @@ using UnityEngine;
 public class DynamicBody : MonoBehaviour
 {
     const float g = 0.6674f;
+    public float ship_force_mult = 1;
+    private float applied_mult = 1;
 
 
     public static List<DynamicBody> dynamicBodiesList;
@@ -17,7 +19,6 @@ public class DynamicBody : MonoBehaviour
     }
     void Start()
     {
-        
     }
 
     void FixedUpdate()
@@ -51,6 +52,7 @@ public class DynamicBody : MonoBehaviour
         float distance = direction.magnitude;
 
         float forceMagnitude = g * (rb2D.mass * rb2DToAttract.mass) / Mathf.Pow(distance, 2);
+
         Vector2 force = direction.normalized * forceMagnitude;
 
         rb2DToAttract.AddForce(force);

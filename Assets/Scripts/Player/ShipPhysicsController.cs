@@ -13,7 +13,7 @@ public class ShipPhysicsController : MonoBehaviour
     void Start()
     {
         thrustKeyDownMult = 0;
-        thrustMagnitude = 0.00025f;
+        thrustMagnitude = 0.1f;
     }
 
     // Update is called once per frame

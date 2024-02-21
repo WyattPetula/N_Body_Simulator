@@ -54,7 +54,7 @@ public class Instantiate_Bodies : MonoBehaviour
             spawn_speed = Mathf.Sqrt(2 * 0.6674f * parentRB2D.mass / obj_distance);
         else
             spawn_speed = 0;
-        
+
         Vector2 spawn_pos;
 
         for (int i = 0; i < num_of_bodies; i++)

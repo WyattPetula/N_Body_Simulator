@@ -7,13 +7,12 @@ public class ShipPhysicsController : MonoBehaviour
     public Rigidbody2D shipPhysicsRB2D;
     public Transform shipGraphicsTransform;
     public Vector3 shipForward;
-    public float thrustMagnitude;
+    public float thrustMagnitude = 0.05f;
     public int thrustKeyDownMult;
 
     void Start()
     {
         thrustKeyDownMult = 0;
-        thrustMagnitude = 0.1f;
     }
 
     // Update is called once per frame

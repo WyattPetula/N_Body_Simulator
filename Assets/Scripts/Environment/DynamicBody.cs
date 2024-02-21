@@ -5,8 +5,7 @@ using UnityEngine;
 public class DynamicBody : MonoBehaviour
 {
     const float g = 0.6674f;
-    public float ship_force_mult = 1;
-    private float applied_mult = 1;
+    public float ship_force_add = 1.3f;
 
 
     public static List<DynamicBody> dynamicBodiesList;
@@ -20,14 +19,18 @@ public class DynamicBody : MonoBehaviour
     void Start()
     {
     }
-
+    
     void FixedUpdate()
     {
         DynamicBody[] dynamicBodiesArray = FindObjectsOfType<DynamicBody>();
         foreach(DynamicBody dynamicBody in dynamicBodiesArray)
         {
+            //Debug.Log(dynamicBody.gameObject.name);
             if (dynamicBody != this)
-                Attract(dynamicBody);
+                if(dynamicBody.name != "Ship Physics")
+                    Attract(dynamicBody, 0);
+                else
+                    Attract(dynamicBody, ship_force_add);
         }
     }
 
@@ -44,14 +47,14 @@ public class DynamicBody : MonoBehaviour
         dynamicBodiesList.Remove(this);
     }
 
-    void Attract (DynamicBody objectToAttract)
+    void Attract (DynamicBody objectToAttract, float ship_force_add)
     {
         Rigidbody2D rb2DToAttract = objectToAttract.rb2D;
 
         Vector2 direction = rb2D.position - rb2DToAttract.position;
         float distance = direction.magnitude;
 
-        float forceMagnitude = g * (rb2D.mass * rb2DToAttract.mass) / Mathf.Pow(distance, 2);
+        float forceMagnitude = g * (rb2D.mass + ship_force_add) * rb2DToAttract.mass / Mathf.Pow(distance, 2);
 
         Vector2 force = direction.normalized * forceMagnitude;
 

@@ -412,7 +412,7 @@ Transform:
   m_GameObject: {fileID: 761646831}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -20.44, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -505,6 +505,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1105929142}
   - component: {fileID: 1105929144}
+  - component: {fileID: 1105929145}
   m_Layer: 0
   m_Name: Instantiator
   m_TagString: Untagged
@@ -541,17 +542,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body_to_instantiate: {fileID: 4380121075188069488, guid: 69bfde284f958f14c8210b159e152820, type: 3}
   parent_body: {fileID: 761646831}
-  num_of_bodies: 60
+  num_of_bodies: 30
   spawn_distribution: Uniform
   clump_multiplier: 0.01
   clump_offset: 0.66
-  orbit_type: Circular
-  base_mass: 0.1
+  orbit_type: Mild E
+  base_mass: 0.5
   mass_variance: 1
   base_size: 1
   size_variance: 1
-  altitude_mult: 5
+  altitude_mult: 6
   altitude_variance: 1.05
+  vertical_speed: 0
+--- !u!114 &1105929145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105929140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f49eb20810bdfec49b87e075923cd3da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body_to_instantiate: {fileID: 4380121075188069488, guid: 69bfde284f958f14c8210b159e152820, type: 3}
+  parent_body: {fileID: 761646831}
+  num_of_bodies: 20
+  spawn_distribution: Uniform
+  clump_multiplier: 0.005
+  clump_offset: 0.33
+  orbit_type: Circular
+  base_mass: 0.5
+  mass_variance: 1
+  base_size: 1
+  size_variance: 1
+  altitude_mult: 11
+  altitude_variance: 1
   vertical_speed: 0
 --- !u!1 &1482799528
 GameObject:
@@ -564,7 +591,6 @@ GameObject:
   - component: {fileID: 1482799529}
   - component: {fileID: 1482799530}
   - component: {fileID: 1482799531}
-  - component: {fileID: 1482799532}
   m_Layer: 0
   m_Name: Atmosphere
   m_TagString: Untagged
@@ -674,19 +700,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 20.479998
---- !u!114 &1482799532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482799528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 195181ce477f414408bd0ecced73b550, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fire_duration: 0.0005
 --- !u!1 &1758415827
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,7 +783,7 @@ Transform:
   m_GameObject: {fileID: 1758415827}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.59, y: 67.11, z: 0}
+  m_LocalPosition: {x: 0, y: 85, z: 0}
   m_LocalScale: {x: 0.3720057, y: 0.58825135, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -789,7 +802,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.05
-  m_LinearDrag: 0
+  m_LinearDrag: 0.5
   m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -988,10 +1001,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipPhysicsRB2D: {fileID: 1758415830}
+  home_planet: {fileID: 761646831}
   shipGraphicsTransform: {fileID: 185647859}
   shipForward: {x: 0, y: 0, z: 0}
   thrustMagnitude: 0.0115
   thrustKeyDownMult: 0
+  altitude: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

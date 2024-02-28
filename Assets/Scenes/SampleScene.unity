@@ -505,7 +505,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1105929142}
   - component: {fileID: 1105929144}
-  - component: {fileID: 1105929145}
+  - component: {fileID: 1105929146}
   m_Layer: 0
   m_Name: Instantiator
   m_TagString: Untagged
@@ -545,16 +545,16 @@ MonoBehaviour:
   num_of_bodies: 30
   spawn_distribution: Uniform
   clump_multiplier: 0.01
-  clump_offset: 0.66
-  orbit_type: Mild E
+  clump_offset: 0.8
+  orbit_type: Suborbital
   base_mass: 0.5
   mass_variance: 1
   base_size: 1
   size_variance: 1
-  altitude_mult: 6
+  altitude_mult: 12
   altitude_variance: 1.05
   vertical_speed: 0
---- !u!114 &1105929145
+--- !u!114 &1105929146
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -568,16 +568,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body_to_instantiate: {fileID: 4380121075188069488, guid: 69bfde284f958f14c8210b159e152820, type: 3}
   parent_body: {fileID: 761646831}
-  num_of_bodies: 20
+  num_of_bodies: 1
   spawn_distribution: Uniform
-  clump_multiplier: 0.005
-  clump_offset: 0.33
+  clump_multiplier: 1
+  clump_offset: 0.5
   orbit_type: Circular
   base_mass: 0.5
   mass_variance: 1
   base_size: 1
   size_variance: 1
-  altitude_mult: 11
+  altitude_mult: 4.25
   altitude_variance: 1
   vertical_speed: 0
 --- !u!1 &1482799528

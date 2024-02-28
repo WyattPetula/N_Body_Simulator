@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8065363078448898887}
   - component: {fileID: 892313323104913914}
   - component: {fileID: 2014476286502466143}
+  - component: {fileID: 302735689972886890}
   m_Layer: 0
   m_Name: Spheroid
   m_TagString: Minor Body
@@ -241,7 +242,7 @@ TrailRenderer:
       key0: {r: 1, g: 1, b: 1, a: 1}
       key1: {r: 1, g: 0.6039216, b: 0.3254902, a: 1}
       key2: {r: 0.6698113, g: 0.27649194, b: 0, a: 1}
-      key3: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0.39215687}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
@@ -257,7 +258,7 @@ TrailRenderer:
       atime0: 0
       atime1: 32382
       atime2: 52043
-      atime3: 0
+      atime3: 65535
       atime4: 0
       atime5: 0
       atime6: 0
@@ -265,7 +266,7 @@ TrailRenderer:
       m_Mode: 0
       m_ColorSpace: 0
       m_NumColorKeys: 3
-      m_NumAlphaKeys: 3
+      m_NumAlphaKeys: 4
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
@@ -291,3 +292,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fire_duration: 0.01
+  drag: 0
+--- !u!114 &302735689972886890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4380121075188069488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56d909c3fd833240a56688133f8188b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion_effect: {fileID: 4302895198235286349, guid: 22c5649f7f72e0245b43c1e9b7ca23b6, type: 3}

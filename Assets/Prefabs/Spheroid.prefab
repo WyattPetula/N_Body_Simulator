@@ -305,4 +305,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56d909c3fd833240a56688133f8188b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion_effect: {fileID: 4302895198235286349, guid: 22c5649f7f72e0245b43c1e9b7ca23b6, type: 3}
+  explosion_effect: {fileID: 4302895198235286349, guid: 1c9a7e9a297ff354cbd97e5a161fe3dc, type: 3}
+  altitude: 0

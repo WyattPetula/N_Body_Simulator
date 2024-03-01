@@ -7,6 +7,7 @@ public class ShipGraphicsController : MonoBehaviour
     public Transform shipPhysicsTransform;
     private float shipAngle;
     public float shipRotationMult;
+    public float sizeMult = 5f;
     // Start is called before the first frame update
     void Start()
     {

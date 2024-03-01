@@ -12,7 +12,7 @@ public class CelestialExplosion : MonoBehaviour
 
     public float altitude;
     private bool explosion_occured;
-    // Start is called before the first frame update
+
     void Start()
     {
         home_planet = GameObject.Find("Celestial Body");
@@ -23,12 +23,11 @@ public class CelestialExplosion : MonoBehaviour
         explosion_occured = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         altitude = (objectRB2D.position - hpRB2D.position).magnitude - hpCC2D.radius * 4;
 
-        if(altitude <= 0.75f && !explosion_occured && objectRB2D.velocity.magnitude > 21)
+        if(altitude <= 1f && !explosion_occured && objectRB2D.velocity.magnitude > 21)
         {
             explosion_occured = true;
             Instantiate(explosion_effect, objectRB2D.position, Quaternion.FromToRotation(Vector3.up, (objectRB2D.position - hpRB2D.position)).normalized);

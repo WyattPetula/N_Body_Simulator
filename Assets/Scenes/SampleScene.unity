@@ -546,7 +546,7 @@ MonoBehaviour:
   clump_multiplier: 0.01
   clump_offset: 0.8
   orbit_type: Suborbital
-  base_mass: 0.1
+  base_mass: 0.5
   mass_variance: 1
   base_size: 1
   size_variance: 1

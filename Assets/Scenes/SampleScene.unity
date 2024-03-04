@@ -543,17 +543,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body_to_instantiate: {fileID: 4380121075188069488, guid: 69bfde284f958f14c8210b159e152820, type: 3}
   parent_body: {fileID: 761646831}
-  num_of_bodies: 40
+  num_of_bodies: 30
   spawn_distribution: Uniform
-  clump_multiplier: 0.01
+  clump_multiplier: 0.005
   clump_offset: 0.8
-  orbit_type: Suborbital
-  base_mass: 0.1
+  orbit_type: Circular
+  base_mass: 1
   mass_variance: 1
   base_size: 1
   size_variance: 1
-  altitude_mult: 18
-  altitude_variance: 1.05
+  altitude_mult: 10
+  altitude_variance: 1.075
   vertical_speed: 0
 --- !u!1 &1482799528
 GameObject:
@@ -773,7 +773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 519420031}
-  sizeMult: 50
+  sizeMult: 5
   xOffset: 0
   yOffset: 0
 --- !u!1 &1758415827
@@ -791,6 +791,7 @@ GameObject:
   - component: {fileID: 1758415832}
   - component: {fileID: 1758415835}
   - component: {fileID: 1758415836}
+  - component: {fileID: 1758415837}
   m_Layer: 0
   m_Name: Ship Physics
   m_TagString: Untagged
@@ -1083,6 +1084,19 @@ MonoBehaviour:
   thrustMagnitude: 0.0115
   thrustKeyDownMult: 0
   altitude: 0
+--- !u!114 &1758415837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758415827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2635b8b51c37a940a968fc52183f608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bomb: {fileID: 791933534327341914, guid: a7d91a9c6fd0ec5459b824959e4176c9, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

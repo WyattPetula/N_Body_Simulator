@@ -8,6 +8,7 @@ public class BombBehavior : MonoBehaviour
     public float power = 10.0F;
     private Rigidbody2D bombRB2D;
     public Rigidbody2D shipRB2D;
+    public ParticleSystem explosion_effect;
     void Start()
     {
         shipRB2D = GameObject.Find("Ship Physics").GetComponent<Rigidbody2D>();
@@ -18,7 +19,7 @@ public class BombBehavior : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.N))
         {
-            Debug.Log("BOOM");
+            Instantiate(explosion_effect, bombRB2D.position, Quaternion.identity);
             Vector2 explosionPos = gameObject.transform.position;
             Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPos, radius);
             foreach (Collider2D hit in colliders)

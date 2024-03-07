@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class SpawnDefenses : MonoBehaviour
 {
+    public GameObject shipGraphics;
     public GameObject bomb;
     private int bomb_count = 3;
-
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -18,7 +14,8 @@ public class SpawnDefenses : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.B) && bomb_count > 0)
         {
-            Instantiate(bomb, gameObject.transform.position - new Vector3(0, 1, 0), Quaternion.identity);
+            Vector3 spawnPos = shipGraphics.transform.position - shipGraphics.transform.up;
+            Instantiate(bomb, spawnPos, gameObject.transform.rotation);
             bomb_count -= 1;
         }
     }

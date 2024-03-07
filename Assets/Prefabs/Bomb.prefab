@@ -189,3 +189,4 @@ MonoBehaviour:
   radius: 1000
   power: 10000
   shipRB2D: {fileID: 0}
+  explosion_effect: {fileID: 4302895198235286349, guid: 3d7be0e42b1b6ce4e9963b5854fb1af9, type: 3}

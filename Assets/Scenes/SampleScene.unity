@@ -545,7 +545,7 @@ MonoBehaviour:
   parent_body: {fileID: 761646831}
   num_of_bodies: 30
   spawn_distribution: Uniform
-  clump_multiplier: 0.005
+  clump_multiplier: 1
   clump_offset: 0.8
   orbit_type: Circular
   base_mass: 1
@@ -1096,6 +1096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2635b8b51c37a940a968fc52183f608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shipGraphics: {fileID: 185647852}
   bomb: {fileID: 791933534327341914, guid: a7d91a9c6fd0ec5459b824959e4176c9, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

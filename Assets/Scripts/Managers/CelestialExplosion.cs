@@ -29,7 +29,6 @@ public class CelestialExplosion : MonoBehaviour
 
         if(altitude <= 1f && !explosion_occured && objectRB2D.velocity.magnitude > 21)
         {
-            explosion_occured = true;
             Instantiate(explosion_effect, objectRB2D.position, Quaternion.FromToRotation(Vector3.up, (objectRB2D.position - hpRB2D.position)).normalized);
             Destroy(gameObject);
         }

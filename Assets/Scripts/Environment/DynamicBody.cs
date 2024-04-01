@@ -29,7 +29,7 @@ public class DynamicBody : MonoBehaviour
             if (dynamicBody != this)
                 if(dynamicBody.name != "Ship Physics")
                     Attract(dynamicBody, 0);
-                else
+                else if (gameObject.name != "Bomb(Clone)")
                     Attract(dynamicBody, ship_force_add);
         }
     }

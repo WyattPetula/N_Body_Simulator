@@ -16,6 +16,25 @@ public class CameraBehavior : MonoBehaviour
         mainCamera.orthographicSize = 5;
         offset = new Vector3(0, 0, -1);
     }
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            cameraZoomMult = -0.05f;
+        }
+        else if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            cameraZoomMult = -0.15f;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            cameraZoomMult = -1f;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            cameraZoomMult = -2f;
+        }
+    }
     void LateUpdate()
     {
         mainCamera.orthographicSize += Input.GetAxisRaw("Vertical") * cameraZoomMult * Time.deltaTime * 800;

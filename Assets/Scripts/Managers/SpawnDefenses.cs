@@ -6,7 +6,7 @@ public class SpawnDefenses : MonoBehaviour
 {
     public GameObject shipGraphics;
     public GameObject bomb;
-    private int bomb_count = 3;
+    private int bomb_count = 100;
 
     // Update is called once per frame
     void Update()

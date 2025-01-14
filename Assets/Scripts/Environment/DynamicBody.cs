@@ -29,14 +29,19 @@ public class DynamicBody : MonoBehaviour
     void FixedUpdate()
     {
         DynamicBody[] dynamicBodiesArray = FindObjectsOfType<DynamicBody>();
-        foreach(DynamicBody dynamicBody in dynamicBodiesArray)
+
+        foreach (DynamicBody dynamicBody in dynamicBodiesArray)
         {
-            //Debug.Log(dynamicBody.gameObject.name);
-            if (dynamicBody != this)
-                if(dynamicBody.name != "Ship Physics")
-                    Attract(dynamicBody, 0);
-                else if (gameObject.name != "Bomb(Clone)")
-                    Attract(dynamicBody, ship_force_add);
+            // Skip if the object is this instance
+            if (dynamicBody == this) continue;
+
+            // Determine the force to add based on object names
+            float forceToAdd = (dynamicBody.name == "Ship Physics" && gameObject.name != "Bomb(Clone)") 
+                            ? ship_force_add 
+                            : 0;
+
+            // Apply attraction with the calculated force
+            Attract(dynamicBody, forceToAdd);
         }
     }
 
@@ -58,13 +63,11 @@ public class DynamicBody : MonoBehaviour
         Rigidbody2D rb2DToAttract = objectToAttract.rb2D;
 
         Vector2 direction = rb2D.position - rb2DToAttract.position;
-        float distance = direction.magnitude;
+        float distanceSquared = direction.sqrMagnitude;
 
-        float forceMagnitude = g * (rb2D.mass + ship_force_add) * rb2DToAttract.mass / Mathf.Pow(distance, 2);
-
-        Vector2 force = direction.normalized * forceMagnitude;
+        float forceMagnitude = g * (rb2D.mass + ship_force_add) * rb2DToAttract.mass / distanceSquared;
+        Vector2 force = direction * (forceMagnitude / Mathf.Sqrt(distanceSquared));
 
         rb2DToAttract.AddForce(force);
-    
     }
 }

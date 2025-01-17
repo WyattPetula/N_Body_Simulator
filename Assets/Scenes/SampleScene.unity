@@ -1928,7 +1928,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 50
   m_Viewport: {fileID: 1021646043}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 1412542671}
@@ -2609,9 +2609,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1649157775}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
+        m_TargetAssemblyTypeName: Spawn_Config, Assembly-CSharp
+        m_MethodName: Instantiate_Config
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2670,8 +2670,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36358689be8a5f2438fa2f3b4966faca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config_ui_object: {fileID: 3311258132105833095, guid: eecad1fc7eb3ba943bc534c665f3e9f3, type: 3}
-  scrollview_content_object: {fileID: 0}
+  config_prefab: {fileID: 3311258132105833095, guid: eecad1fc7eb3ba943bc534c665f3e9f3, type: 3}
+  content_panel: {fileID: 1616270086}
 --- !u!1 &1758415827
 GameObject:
   m_ObjectHideFlags: 0

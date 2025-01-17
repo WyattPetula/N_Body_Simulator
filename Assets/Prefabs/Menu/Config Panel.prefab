@@ -3938,6 +3938,7 @@ GameObject:
   - component: {fileID: 2638757328635730018}
   - component: {fileID: 2985069027537040254}
   - component: {fileID: 6443548794691035066}
+  - component: {fileID: 767088051487018442}
   m_Layer: 5
   m_Name: Delete Button
   m_TagString: Untagged
@@ -4046,7 +4047,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2985069027537040254}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 767088051487018442}
+        m_TargetAssemblyTypeName: Delete_Config, Assembly-CSharp
+        m_MethodName: Remove_Config
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &767088051487018442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2700300080874800824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93088095cede52048b1ed1a6984d3b39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2851376641265158302
 GameObject:
   m_ObjectHideFlags: 0
@@ -5000,7 +5025,6 @@ GameObject:
   - component: {fileID: 5091572117647652628}
   - component: {fileID: 7996054380192182483}
   - component: {fileID: 650833928736239456}
-  - component: {fileID: -1961569608746791326}
   m_Layer: 5
   m_Name: Config Panel
   m_TagString: Untagged
@@ -5068,32 +5092,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &-1961569608746791326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3311258132105833095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f49eb20810bdfec49b87e075923cd3da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  body_to_instantiate: {fileID: 0}
-  parent_body: {fileID: 0}
-  num_of_bodies: 1
-  spawn_distribution: Random
-  clump_multiplier: 1
-  clump_offset: 0
-  orbit_type: Circular
-  base_mass: 10
-  mass_variance: 1
-  base_size: 1
-  size_variance: 1
-  altitude_mult: 2
-  altitude_variance: 1
-  vertical_speed: 0
 --- !u!1 &3571577230782404342
 GameObject:
   m_ObjectHideFlags: 0

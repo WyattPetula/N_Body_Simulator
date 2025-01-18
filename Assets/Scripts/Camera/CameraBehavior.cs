@@ -37,7 +37,12 @@ public class CameraBehavior : MonoBehaviour
     }
     void LateUpdate()
     {
-        mainCamera.orthographicSize += Input.GetAxisRaw("Vertical") * cameraZoomMult * Time.deltaTime * 800;
+        if(Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0){
+            mainCamera.orthographicSize += Input.GetAxisRaw("Vertical") * cameraZoomMult * Time.deltaTime * 800;
+        }
+        else{
+            mainCamera.orthographicSize += Input.mouseScrollDelta.y * (cameraZoomMult * 10) * Time.deltaTime * 800;
+        }
         if (mainCamera.orthographicSize < 3)
             mainCamera.orthographicSize = 3;
 

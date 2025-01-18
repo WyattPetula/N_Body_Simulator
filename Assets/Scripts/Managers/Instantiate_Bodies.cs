@@ -83,6 +83,9 @@ public class Instantiate_Bodies : MonoBehaviour
                 GameObject instance = Instantiate(config.body_to_spawn, spawn_pos, Quaternion.identity);
                 Rigidbody2D instanceRB2D = instance.GetComponent<Rigidbody2D>();
 
+                // Track all spawned bodies in a Global list.
+                Globals.spawned_objects.Add(instance);
+
                 // Initialize instances' initial velocities.
                 Vector2 radial_vector = instanceRB2D.position - parentRB2D.position;
                 

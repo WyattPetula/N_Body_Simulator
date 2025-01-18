@@ -5,10 +5,16 @@ using UnityEngine;
 public class Manage_UI : MonoBehaviour
 {
     public CanvasGroup canvas_group;
+	void Start()
+	{
+		canvas_group.blocksRaycasts = false;
+        canvas_group.interactable = false;
+		canvas_group.alpha = 0;
+	}
 
 	void Update() 
 	{
-		if (Input.GetKeyUp(KeyCode.U)) 
+		if (Input.GetMouseButtonUp(1) || Input.GetKeyUp(KeyCode.Period))  
 		{
 			canvas_group.blocksRaycasts = !canvas_group.blocksRaycasts;
             canvas_group.interactable = !canvas_group.interactable;

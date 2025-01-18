@@ -19,7 +19,7 @@ public class Spawn_Config : MonoBehaviour
         new_config.GetComponent<Config>().Load_Options();
 
         // Label the new config with a number.
-        GameObject config_text_panel = new_config.transform.GetChild(0).gameObject;
+        GameObject config_text_panel = new_config.transform.GetChild(1).gameObject;
         config_text_panel.GetComponent<TextMeshProUGUI>().text = "Configuration " + config_index.ToString();
         config_index++;
     }

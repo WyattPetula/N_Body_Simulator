@@ -14,7 +14,7 @@ public class Manage_UI : MonoBehaviour
 
 	void Update() 
 	{
-		if (Input.GetMouseButtonUp(1) || Input.GetKeyUp(KeyCode.Period))  
+		if (Input.GetMouseButtonUp(1) || Input.GetKeyUp(KeyCode.C))  
 		{
 			canvas_group.blocksRaycasts = !canvas_group.blocksRaycasts;
             canvas_group.interactable = !canvas_group.interactable;

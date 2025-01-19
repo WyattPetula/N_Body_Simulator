@@ -25,6 +25,7 @@ public class Instantiate_Bodies : MonoBehaviour
     {
         GameObject config_container = GameObject.Find("Content");
         foreach(RectTransform config_transform in config_container.transform){
+            configs_list.Clear();
             configs_list.Add(config_transform.gameObject.GetComponent<Config>());
         }
         // Instantiate each UI config into the simulation.
@@ -46,21 +47,21 @@ public class Instantiate_Bodies : MonoBehaviour
             if (config.orbit_type == "Vertical")
                 spawn_speed = -config.vertical_velocity;
             else if (config.orbit_type == "Suborbital")
-                spawn_speed = Mathf.Sqrt(0.3f * 0.6674f * parentRB2D.mass / obj_distance);
+                spawn_speed = 0.7f * Mathf.Sqrt(0.6674f * parentRB2D.mass / obj_distance);
             else if (config.orbit_type == "Grazing")
-                spawn_speed = Mathf.Sqrt(0.6f * 0.6674f * parentRB2D.mass / obj_distance);
-            else if (config.orbit_type == "Inward E")
-                spawn_speed = Mathf.Sqrt(0.8f * 0.6674f * parentRB2D.mass / obj_distance);
+                spawn_speed = 0.8f * Mathf.Sqrt(0.6674f * parentRB2D.mass / obj_distance);
+            else if (config.orbit_type == "Approach")
+                spawn_speed = 0.9f * Mathf.Sqrt(0.6674f * parentRB2D.mass / obj_distance);
             else if (config.orbit_type == "Circular")
                 spawn_speed = Mathf.Sqrt(0.6674f * parentRB2D.mass / obj_distance);
             else if (config.orbit_type == "Mild E")
-                spawn_speed = Mathf.Sqrt(1.2f * 0.6674f * parentRB2D.mass / obj_distance);
+                spawn_speed = 1.1f * Mathf.Sqrt(0.6674f * parentRB2D.mass / obj_distance);
             else if (config.orbit_type == "Moderate E")
-                spawn_speed = Mathf.Sqrt(1.4f * 0.6674f * parentRB2D.mass / obj_distance);
+                spawn_speed = 1.3f * Mathf.Sqrt(0.6674f * parentRB2D.mass / obj_distance);
             else if (config.orbit_type == "High E")
-                spawn_speed = Mathf.Sqrt(1.6f * 0.6674f * parentRB2D.mass / obj_distance);
+                spawn_speed = 1.6f * Mathf.Sqrt(0.6674f * parentRB2D.mass / obj_distance);
             else if (config.orbit_type == "Escape")
-                spawn_speed = Mathf.Sqrt(2 * 0.6674f * parentRB2D.mass / obj_distance);
+                spawn_speed = 2 * Mathf.Sqrt(0.6674f * parentRB2D.mass / obj_distance);
             else
                 spawn_speed = 0;
 

@@ -72,8 +72,7 @@ public class Config : MonoBehaviour
         clump_offset = float.Parse(input_areas[6].GetComponent<TMP_InputField>().text);
 
         // Orbit to spawn objects in
-        TMP_Dropdown orbit_dropdown = input_areas[7].GetComponent<TMP_Dropdown>();
-        orbit_type = orbit_dropdown.options[orbit_dropdown.value].text;
+        orbit_type = input_areas[7].GetComponent<TMP_InputField>().text;
 
         // Other inputs 3
         default_mass = float.Parse(input_areas[8].GetComponent<TMP_InputField>().text);

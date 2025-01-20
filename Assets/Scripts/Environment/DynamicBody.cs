@@ -32,7 +32,7 @@ public class DynamicBody : MonoBehaviour
                 if (dynamicBody == this) continue;
 
                 // Avoid unwanted forces between some objects.
-                float forceToAdd = (dynamicBody.name == "Ship Physics" && gameObject.name != "Bomb(Clone)") 
+                float forceToAdd = (dynamicBody.name == "Ship Physics" && gameObject.name != "Bomb(Clone)" && gameObject.name != "Bomb_Player(Clone)") 
                                 ? ship_force_add 
                                 : 0;
 

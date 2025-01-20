@@ -3455,7 +3455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipGraphics: {fileID: 185647852}
-  bomb: {fileID: 791933534327341914, guid: a7d91a9c6fd0ec5459b824959e4176c9, type: 3}
+  bomb: {fileID: 791933534327341914, guid: 0326979db515f3b48851bb0eb3ef457b, type: 3}
 --- !u!1 &1885284194
 GameObject:
   m_ObjectHideFlags: 0

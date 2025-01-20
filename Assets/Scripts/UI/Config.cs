@@ -10,9 +10,9 @@ public class Config : MonoBehaviour
     private List<GameObject> input_areas = new List<GameObject>();
 
     // Storage variables
-    public bool config_enabled = true;
-    public GameObject body_to_spawn = null;
-    public GameObject parent_body = null;
+    public string config_enabled = "Active";
+    public GameObject body_to_spawn;
+    public GameObject parent_body;
     public int num_of_bodies = 10;
     public string spawn_distribution = "Random";
     public float clump_mult = 0.01f;
@@ -24,8 +24,25 @@ public class Config : MonoBehaviour
     public float size_var = 1;
     public float altitude_mult = 5;
     public float altitude_var = 1.075f;
-    public float vertical_velocity = 1;
-    public bool cw_spawn_dir = true;
+    public float vertical_velocity = 0;
+
+    void Start(){
+        body_to_spawn = Resources.Load("Prefabs/Spheroid") as GameObject;
+        parent_body = GameObject.Find("Celestial Body");
+        config_enabled = "Active";
+        num_of_bodies = 10;
+        spawn_distribution = "Random";
+        clump_mult = 0.01f;
+        clump_offset = 0.8f;
+        orbit_type = 1;
+        default_mass = 1;
+        mass_var = 1;
+        default_size = 1;
+        size_var = 1;
+        altitude_mult = 5;
+        altitude_var = 1.075f;
+        vertical_velocity = 0;
+    }
 
     // Called inside Spawn_Configs: Load config options when first instantiated
     public void Load_Options(){
@@ -38,7 +55,8 @@ public class Config : MonoBehaviour
     // Update the config variables with the current inputs on the UI.
     public void Apply_Config_Changes(){
         // Whether to skip the config during instantiation.
-        config_enabled = input_areas[0].GetComponent<UnityEngine.UI.Toggle>().isOn;
+        TMP_Dropdown c_enabler = input_areas[0].GetComponent<TMP_Dropdown>();
+        config_enabled = c_enabler.options[c_enabler.value].text;
 
         // Object to spawn
         TMP_Dropdown name_dropdown = input_areas[1].GetComponent<TMP_Dropdown>();

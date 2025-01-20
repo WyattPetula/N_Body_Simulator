@@ -15,7 +15,7 @@ public class BombBehavior : MonoBehaviour
     {
         shipRB2D = GameObject.Find("Ship Physics").GetComponent<Rigidbody2D>();
         bombRB2D = gameObject.GetComponent<Rigidbody2D>();
-        if(!config_spawned)
+        if(gameObject.name == "Bomb_Player(Clone)")
             bombRB2D.velocity = shipRB2D.velocity;
     }
     void Update()

@@ -12,6 +12,7 @@ public class DynamicBody : MonoBehaviour
     public Rigidbody2D rb2D;
     void Start()
     {
+        // Initialize celestial dynamics.
         if(gameObject.name == "Inner Moon" || gameObject.name == "Outer Moon")
         {
             Rigidbody2D mainBody = GameObject.Find("Celestial Body").GetComponent<Rigidbody2D>();
@@ -28,15 +29,13 @@ public class DynamicBody : MonoBehaviour
 
             foreach (DynamicBody dynamicBody in dynamicBodiesArray)
             {
-                // Skip if the object is this instance
                 if (dynamicBody == this) continue;
 
-                // Determine the force to add based on object names
+                // Avoid unwanted forces between some objects.
                 float forceToAdd = (dynamicBody.name == "Ship Physics" && gameObject.name != "Bomb(Clone)") 
                                 ? ship_force_add 
                                 : 0;
 
-                // Apply attraction with the calculated force
                 Attract(dynamicBody, forceToAdd);
             }
         }
@@ -55,7 +54,7 @@ public class DynamicBody : MonoBehaviour
         dynamicBodiesList.Remove(this);
     }
 
-    void Attract (DynamicBody objectToAttract, float ship_force_add)
+    void Attract(DynamicBody objectToAttract, float ship_force_add)
     {
         Rigidbody2D rb2DToAttract = objectToAttract.rb2D;
 

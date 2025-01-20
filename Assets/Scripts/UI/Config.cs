@@ -1,11 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class Config : MonoBehaviour
 {
@@ -20,40 +17,44 @@ public class Config : MonoBehaviour
     public string spawn_distribution = "Random";
     public float clump_mult = 0.01f;
     public float clump_offset = 0.8f;
-    public string orbit_type = "Circular";
+    public float orbit_type = 1;
     public float default_mass = 1;
     public float mass_var = 1;
     public float default_size = 1;
     public float size_var = 1;
     public float altitude_mult = 5;
     public float altitude_var = 1.075f;
-    public float vertical_velocity = 0;
+    public float vertical_velocity = 1;
+    public bool cw_spawn_dir = true;
 
     // Called inside Spawn_Configs: Load config options when first instantiated
     public void Load_Options(){
         Transform inputs_container = transform.GetChild(0);
-        Debug.Log("Transform: " + inputs_container);
         foreach (RectTransform input_transform in inputs_container){
             input_areas.Add(input_transform.gameObject);
         }
-        Debug.Log("TOTAL ESTE: " + input_areas.Count);
     }
 
-    // Update the storage variables with the current inputs on the UI.
+    // Update the config variables with the current inputs on the UI.
     public void Apply_Config_Changes(){
         // Whether to skip the config during instantiation.
         config_enabled = input_areas[0].GetComponent<UnityEngine.UI.Toggle>().isOn;
-        Debug.Log("0");
 
         // Object to spawn
         TMP_Dropdown name_dropdown = input_areas[1].GetComponent<TMP_Dropdown>();
         string spawn_name = name_dropdown.options[name_dropdown.value].text;
         
-        if(spawn_name == "Sphere"){
+        if(spawn_name == "Circle"){
             body_to_spawn = Resources.Load("Prefabs/Spheroid") as GameObject;
         }
-        else {
-            body_to_spawn = Resources.Load("Prefabs/Spheroid") as GameObject;
+        else if(spawn_name == "Triangle"){
+            body_to_spawn = Resources.Load("Prefabs/Triangle") as GameObject;
+        }
+        else if(spawn_name == "Square"){
+            body_to_spawn = Resources.Load("Prefabs/Square") as GameObject;
+        }
+        else{
+            body_to_spawn = Resources.Load("Prefabs/Bomb") as GameObject;
         }
 
         // Parent to spawn object around
@@ -70,9 +71,7 @@ public class Config : MonoBehaviour
         // Other inputs 2
         clump_mult = float.Parse(input_areas[5].GetComponent<TMP_InputField>().text);
         clump_offset = float.Parse(input_areas[6].GetComponent<TMP_InputField>().text);
-
-        // Orbit to spawn objects in
-        orbit_type = input_areas[7].GetComponent<TMP_InputField>().text;
+        orbit_type = float.Parse(input_areas[7].GetComponent<TMP_InputField>().text);
 
         // Other inputs 3
         default_mass = float.Parse(input_areas[8].GetComponent<TMP_InputField>().text);
@@ -82,23 +81,5 @@ public class Config : MonoBehaviour
         altitude_mult = float.Parse(input_areas[12].GetComponent<TMP_InputField>().text);
         altitude_var = float.Parse(input_areas[13].GetComponent<TMP_InputField>().text);
         vertical_velocity = float.Parse(input_areas[14].GetComponent<TMP_InputField>().text);
-
-        // Sanity check
-        Debug.Log("Config saved successfully");
-        Debug.Log(config_enabled);
-        Debug.Log(body_to_spawn.name);
-        Debug.Log(parent_body.name);
-        Debug.Log(num_of_bodies);
-        Debug.Log(spawn_distribution);
-        Debug.Log(clump_mult);
-        Debug.Log(clump_offset);
-        Debug.Log(orbit_type);
-        Debug.Log(default_mass);
-        Debug.Log(mass_var);
-        Debug.Log(default_size);
-        Debug.Log(size_var);
-        Debug.Log(altitude_mult);
-        Debug.Log(altitude_var);
-        Debug.Log(vertical_velocity);
     }
 }

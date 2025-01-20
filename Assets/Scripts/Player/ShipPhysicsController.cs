@@ -22,9 +22,9 @@ public class ShipPhysicsController : MonoBehaviour
         thrustKeyDownMult = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // Apply drag to ship when inside the atmosphere.
         altitude = (shipPhysicsRB2D.position - hpRB2D.position).magnitude - hpCC2D.radius * 4;
         shipPhysicsRB2D.drag = -0.5f / (1 + Mathf.Pow(2.7182f, -1.4f * altitude + 2)) + 0.5000000005f;
 

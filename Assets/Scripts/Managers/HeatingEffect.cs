@@ -14,7 +14,7 @@ public class HeatingEffect : MonoBehaviour
     private float altitude;
     private bool in_atmo;
     public float drag;
-    // Start is called before the first frame update
+
     void Start()
     {
         home_planet = GameObject.Find("Celestial Body");
@@ -24,9 +24,9 @@ public class HeatingEffect : MonoBehaviour
         trail_renderer = gameObject.GetComponent<TrailRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // Apply reentry trails when meteoroids enter the Earth's atmosphere.
         altitude = (objectRB2D.position - hpRB2D.position).magnitude - hpCC2D.radius * 4;
         objectRB2D.drag = -0.5f / (1 + Mathf.Pow(2.7182f, -1.4f * altitude + 2)) + 0.5000000005f;
 

@@ -7,11 +7,9 @@ public class SpawnDefenses : MonoBehaviour
     public GameObject shipGraphics;
     public GameObject bomb;
     private int bomb_count = 100;
-
-    // Update is called once per frame
     void Update()
     {
-
+        // Spawn bombs from the player.
         if(Input.GetKeyDown(KeyCode.B) && bomb_count > 0)
         {
             Vector3 spawnPos = shipGraphics.transform.position - shipGraphics.transform.up;

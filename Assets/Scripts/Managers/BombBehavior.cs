@@ -9,14 +9,18 @@ public class BombBehavior : MonoBehaviour
     private Rigidbody2D bombRB2D;
     public Rigidbody2D shipRB2D;
     public ParticleSystem explosion_effect;
+
+    public bool config_spawned = false;
     void Start()
     {
         shipRB2D = GameObject.Find("Ship Physics").GetComponent<Rigidbody2D>();
         bombRB2D = gameObject.GetComponent<Rigidbody2D>();
-        bombRB2D.velocity = shipRB2D.velocity;
+        if(!config_spawned)
+            bombRB2D.velocity = shipRB2D.velocity;
     }
     void Update()
     {
+        // Explode bombs and apply explosion force to surrounding objects.
         if(Input.GetKeyDown(KeyCode.N))
         {
             Instantiate(explosion_effect, bombRB2D.position, Quaternion.identity);

@@ -14,6 +14,7 @@ public class Manage_UI : MonoBehaviour
 
 	void Update() 
 	{
+		// Show / hide config UI.
 		if (Input.GetMouseButtonUp(1) || Input.GetKeyUp(KeyCode.C))  
 		{
 			canvas_group.blocksRaycasts = !canvas_group.blocksRaycasts;

@@ -25,6 +25,7 @@ public class CelestialExplosion : MonoBehaviour
 
     void Update()
     {
+        // Apply particle effects when a meteroid hits Earth.
         altitude = (objectRB2D.position - hpRB2D.position).magnitude - hpCC2D.radius * 4;
 
         if(altitude <= 1f && !explosion_occured && objectRB2D.velocity.magnitude > 21)

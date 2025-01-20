@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class Reset_Sim : MonoBehaviour
@@ -12,12 +10,10 @@ public class Reset_Sim : MonoBehaviour
     public void Reset_Simulator(){
         Globals.freeze_simulation = true;
 
-        // Delete all spawned objects.
+        // Delete spawned objects.
         foreach(GameObject spawned_body in Globals.spawned_objects){
             Destroy(spawned_body);
         }
-
-        Debug.Log("Destroyed all spawned objects");
         
         Rigidbody2D celestial_body_rb2D = celestial_body.GetComponent<Rigidbody2D>();
         Rigidbody2D inner_body_rb2D = inner_moon.GetComponent<Rigidbody2D>();
@@ -36,8 +32,6 @@ public class Reset_Sim : MonoBehaviour
         inner_body_rb2D.position = Constants.inner_moon_startpos;
         outer_body_rb2D.position = Constants.outer_moon_startpos;
 
-        Debug.Log(inner_body_rb2D.position);
-
         // Reset celestial bodies' initial velocities.
         Vector2 inner_radial_vector = inner_body_rb2D.position - celestial_body_rb2D.position;
         float inner_spawn_speed = Mathf.Sqrt(0.6674f * celestial_body_rb2D.mass / inner_radial_vector.magnitude);
@@ -47,12 +41,10 @@ public class Reset_Sim : MonoBehaviour
         float outer_spawn_speed = Mathf.Sqrt(0.6674f * celestial_body_rb2D.mass / outer_radial_vector.magnitude);
         outer_body_rb2D.velocity = Vector3.Cross(outer_radial_vector, Vector3.forward).normalized * outer_spawn_speed;
 
-        celestial_body_rb2D.angularVelocity = 1f;
-
-        Debug.Log("Reset all celestial and player dynamics");
         Globals.freeze_simulation = false;
     }
     public void Reset_Objects() {
+        // Delete spawned objects.
         foreach(GameObject spawned_body in Globals.spawned_objects){
             Destroy(spawned_body);
         }

@@ -18,6 +18,7 @@ public class CameraBehavior : MonoBehaviour
     }
     void Update()
     {
+        // Adjust camera zoom speeds.
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             cameraZoomMult = -0.05f;
@@ -37,6 +38,7 @@ public class CameraBehavior : MonoBehaviour
     }
     void LateUpdate()
     {
+        // Apply camera zoom in-game.
         if(Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0){
             mainCamera.orthographicSize += Input.GetAxisRaw("Vertical") * cameraZoomMult * Time.deltaTime * 800;
         }

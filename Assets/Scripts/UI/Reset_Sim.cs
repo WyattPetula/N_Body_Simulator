@@ -22,9 +22,13 @@ public class Reset_Sim : MonoBehaviour
 
         // Reset velocities to zero for reset prep.
         player_rb2D.velocity = new Vector3(0, 0, 0);
+        player_rb2D.angularVelocity = 0;
         celestial_body_rb2D.velocity = new Vector3(0, 0, 0);
+        celestial_body_rb2D.angularVelocity = 0;
         inner_body_rb2D.velocity = new Vector3(0, 0, 0);
+        inner_body_rb2D.angularVelocity = 0;
         outer_body_rb2D.velocity = new Vector3(0, 0, 0);
+        outer_body_rb2D.angularVelocity = 0;
 
         // Reset celestial bodies to starting positions.
         celestial_body_rb2D.position = Constants.celestial_body_startpos;
@@ -40,6 +44,10 @@ public class Reset_Sim : MonoBehaviour
         Vector2 outer_radial_vector = outer_body_rb2D.position - celestial_body_rb2D.position;
         float outer_spawn_speed = Mathf.Sqrt(0.6674f * celestial_body_rb2D.mass / outer_radial_vector.magnitude);
         outer_body_rb2D.velocity = Vector3.Cross(outer_radial_vector, Vector3.forward).normalized * outer_spawn_speed;
+
+        // Reset Earth color.
+        GameObject.Find("Celestial Body").GetComponent<Manage_Earth>().ResetEarth();
+        GameObject.Find("Atmosphere").GetComponent<Manage_Atmo>().ResetAtmo();
 
         Globals.freeze_simulation = false;
     }

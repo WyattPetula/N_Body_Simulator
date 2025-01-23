@@ -9,8 +9,6 @@ public class BombBehavior : MonoBehaviour
     private Rigidbody2D bombRB2D;
     public Rigidbody2D shipRB2D;
     public ParticleSystem explosion_effect;
-
-    public bool config_spawned = false;
     void Start()
     {
         shipRB2D = GameObject.Find("Ship Physics").GetComponent<Rigidbody2D>();

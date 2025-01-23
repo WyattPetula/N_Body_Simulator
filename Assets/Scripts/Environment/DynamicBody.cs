@@ -20,6 +20,10 @@ public class DynamicBody : MonoBehaviour
             float spawn_speed = Mathf.Sqrt(0.6674f * mainBody.mass / radial_vector.magnitude);
             rb2D.velocity = Vector3.Cross(radial_vector, Vector3.forward).normalized * spawn_speed;
         }
+        if(gameObject.name == "Celestial Body"){
+            Rigidbody2D mainBody = GameObject.Find("Celestial Body").GetComponent<Rigidbody2D>();
+            mainBody.angularVelocity = 0;
+        }
     }
     
     void FixedUpdate()

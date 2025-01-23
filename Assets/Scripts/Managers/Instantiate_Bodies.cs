@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -78,9 +79,17 @@ public class Instantiate_Bodies : MonoBehaviour
                     instanceRB2D.velocity = Vector3.Cross(radial_vector, Vector3.forward).normalized * spawn_speed + (Vector3)(radial_vector * config.vertical_velocity);
 
                     // Apply specified instance masses and sizes.
-                    instanceRB2D.mass = Random.Range(config.default_mass, config.default_mass * config.mass_var);
-                    float instance_radius = Random.Range(config.default_size, config.default_size * config.size_var);
-                    instance.transform.localScale = new Vector3(instance_radius, instance_radius, 1);
+                    if(instance.name != "Bomb(Clone)") {
+                        instanceRB2D.mass = Random.Range(config.default_mass, config.default_mass * config.mass_var);
+                        float instance_radius = Random.Range(config.default_size, config.default_size * config.size_var);
+                        instance.transform.localScale = new Vector3(instance_radius, instance_radius, 1);
+
+                    }
+                    else{
+                        instance.GetComponent<BombBehavior>().power = Random.Range(config.default_mass, config.default_mass * config.mass_var);
+                        instance.GetComponent<BombBehavior>().radius = Random.Range(config.default_size, config.default_size * config.size_var);
+                        instance.transform.localScale = new Vector3(0.2f, 0.2f, 1);
+                    }
                 }
             }
         }

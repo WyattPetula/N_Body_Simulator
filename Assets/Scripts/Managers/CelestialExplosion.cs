@@ -31,6 +31,8 @@ public class CelestialExplosion : MonoBehaviour
         if(altitude <= 1f && !explosion_occured && objectRB2D.velocity.magnitude > 21)
         {
             Instantiate(explosion_effect, objectRB2D.position, Quaternion.FromToRotation(Vector3.up, (objectRB2D.position - hpRB2D.position)).normalized);
+            GameObject.Find("Celestial Body").GetComponent<Manage_Earth>().HeatEarth();
+            GameObject.Find("Atmosphere").GetComponent<Manage_Atmo>().HeatAtmo();
             Destroy(gameObject);
         }
     }

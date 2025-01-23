@@ -6,15 +6,13 @@ public class SpawnDefenses : MonoBehaviour
 {
     public GameObject shipGraphics;
     public GameObject bomb;
-    private int bomb_count = 100;
     void Update()
     {
         // Spawn bombs from the player.
-        if(Input.GetKeyDown(KeyCode.B) && bomb_count > 0)
+        if(Input.GetKeyDown(KeyCode.B))
         {
             Vector3 spawnPos = shipGraphics.transform.position - shipGraphics.transform.up;
             Instantiate(bomb, spawnPos, gameObject.transform.rotation);
-            bomb_count -= 1;
         }
     }
 }

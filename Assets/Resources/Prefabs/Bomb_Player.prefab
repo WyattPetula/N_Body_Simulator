@@ -104,7 +104,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 346e3de259650d341b877bfcd5df0b7a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -186,8 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d6589651314e5408131f2cf01444a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1000
-  power: 10000
+  radius: 5
+  power: 200
   shipRB2D: {fileID: 0}
   explosion_effect: {fileID: 4302895198235286349, guid: 3d7be0e42b1b6ce4e9963b5854fb1af9, type: 3}
-  config_spawned: 0

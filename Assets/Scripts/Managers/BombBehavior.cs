@@ -19,7 +19,7 @@ public class BombBehavior : MonoBehaviour
     void Update()
     {
         // Explode bombs and apply explosion force to surrounding objects.
-        if(Input.GetKeyDown(KeyCode.N))
+        if(Input.GetKeyDown(KeyCode.M))
         {
             Instantiate(explosion_effect, bombRB2D.position, Quaternion.identity);
             Vector2 explosionPos = gameObject.transform.position;
